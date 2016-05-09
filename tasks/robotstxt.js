@@ -35,16 +35,6 @@ module.exports = function (grunt) {
         }
         n += 1;
         str += 'User-agent: ' + p.ua;
-        if (p.disallow) {
-          if (typeof(p.disallow) === 'string') {
-            str += '\nDisallow: ' + p.disallow;
-          }
-          if (typeof(p.disallow) === 'object') {
-            _.map(p.disallow, function (d) {
-              str += '\nDisallow: ' + d;
-            });
-          }
-        }
         if (p.allow) {
           if (typeof(p.allow) === 'string') {
             str += '\nAllow: ' + p.allow;
@@ -54,6 +44,16 @@ module.exports = function (grunt) {
               str += '\nAllow: ' + d;
             });
           }
+        }
+      }
+      if (p.disallow) {
+        if (typeof(p.disallow) === 'string') {
+          str += '\nDisallow: ' + p.disallow;
+        }
+        if (typeof(p.disallow) === 'object') {
+          _.map(p.disallow, function (d) {
+            str += '\nDisallow: ' + d;
+          });
         }
       }
       if (p.sitemap) {
